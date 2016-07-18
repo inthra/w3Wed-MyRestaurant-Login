@@ -46,11 +46,14 @@ public class FirebaseRestaurantListAdapter extends FirebaseRecyclerAdapter<Resta
     @Override
     public boolean onItemMove(int fromPosition, int toPosition) {
         // override methods from the ItemTouchHelperAdapter interface
+        notifyItemMoved(fromPosition, toPosition);
+        // this is a java method, it get starting and final position
         return false;
     }
 
     @Override
     public void onItemDismiss(int position) {
         // override methods from the ItemTouchHelperAdapter interface
+        getRef(position).removeValue();
     }
 }
